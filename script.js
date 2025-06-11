@@ -1,27 +1,26 @@
-
 const questions = [
   {
-    text: "You wake up to a glowing message on your wristband: 'Choose your first mission.' What kind of adventure would you pick today?",
+    text: "🌟 What kind of adventure excites you the most?",
     options: [
-      { text: "Break into a mad scientist’s secret lab", value: "science" },
-      { text: "Hack into a mysterious virtual world", value: "it" },
-      { text: "Gather your lost friends for a reunion", value: "social" },
-      { text: "Color the world with magical paint", value: "arts" },
-      { text: "Build a secret hideout in the woods", value: "practical" }
+      { text: "Exploring a lab full of bubbling experiments", value: "science" },
+      { text: "Hacking into a virtual world", value: "it" },
+      { text: "Leading a team on a mission", value: "social" },
+      { text: "Painting a mural on a castle wall", value: "arts" },
+      { text: "Building a treehouse in the forest", value: "practical" }
     ]
   },
   {
-    text: "You put on your mission gear. Your digital buddy blinks to life and asks, 'What’s your undercover name?'",
+    text: "🧙 You put on your mission gear. Your digital buddy asks, “What’s your undercover name?”",
     options: [
       { text: "Lorsatan the Logical", value: "science" },
-      { text: "printf('helloworld')", value: "it" },
+      { text: "printf('buddy')", value: "it" },
       { text: "Captain Kindheart", value: "social" },
       { text: "Dreamweaver Dali", value: "arts" },
       { text: "Wrenchmaster Willow", value: "practical" }
     ]
   },
   {
-    text: "A magical companion joins you. What kind of creature do you bond with?",
+    text: "🧚 A magical companion joins you. What kind of creature do you bond with?",
     options: [
       { text: "A glowing jellyfish that whispers facts", value: "science" },
       { text: "A pixelated fox that speaks in code", value: "it" },
@@ -31,47 +30,27 @@ const questions = [
     ]
   },
   {
-    text: "You have to break into the target hideout. How would you try?",
+    text: "🕵️ You have to break into the target hideout. How would you try?",
     options: [
-      { text: "Pick the impossible lock", value: "practical" },
       { text: "Pour acidic chemicals to melt the door", value: "science" },
       { text: "Hack the security system", value: "it" },
-      { text: "Get your companion to climb into the vent", value: "social" },
-      { text: "Disguise yourself", value: "arts" }
+      { text: "Disguise yourself and sneak in", value: "social" },
+      { text: "Get your companion to climb into the vent", value: "arts" },
+      { text: "Pick the impossible lock", value: "practical" }
     ]
   },
   {
-    text: "As you step outside, a shimmering portal appears. It can take you anywhere. Where do you go?",
+    text: "🎒 You find a backpack with one special item inside. What is it?",
     options: [
-      { text: "A floating lab orbiting a distant planet", value: "science" },
-      { text: "A neon-lit city inside a computer chip", value: "it" },
-      { text: "A village where everyone speaks in riddles", value: "social" },
-      { text: "A dreamscape painted by imagination", value: "arts" },
-      { text: "A forest of gears and glowing machines", value: "practical" }
-    ]
-  },
-  {
-    text: "To pass through the portal, you must solve a challenge. What kind of puzzle do you choose?",
-    options: [
-      { text: "A logic grid about chemical reactions", value: "science" },
-      { text: "A code-breaking sequence", value: "it" },
-      { text: "A social mystery involving hidden motives", value: "social" },
-      { text: "A visual riddle made of shifting colors", value: "arts" },
-      { text: "A mechanical lock with moving parts", value: "practical" }
-    ]
-  },
-  {
-    text: "You find a backpack with one special item inside. What is it?",
-    options: [
-      { text: "A microscope that reveals hidden truths", value: "science" },
+      { text: "A glasses that reveals hidden truths", value: "science" },
       { text: "A USB drive with mysterious files", value: "it" },
-      { text: "A journal filled with stories from strangers", value: "social" },
-      { text: "A sketchbook that draws itself", value: "arts" },
-      { text: "A multi-tool that transforms into anything", value: "practical" }
+      { text: "A bagpack of endless money ", value: "social" },
+      { text: "A sketchbook that makes anything that is drawn", value: "arts" },
+      { text: "A multi-tool that opens any lock", value: "practical" }
     ]
   },
   {
-    text: "Your companion gives you a map with a glowing trail. Where does it lead?",
+    text: "🗺️ Your companion gives you a map with a glowing trail. Where does it lead?",
     options: [
       { text: "A volcano where scientists study lava", value: "science" },
       { text: "A server room deep beneath the earth", value: "it" },
@@ -81,7 +60,7 @@ const questions = [
     ]
   },
   {
-    text: "You reach a checkpoint. To continue, you must complete a task. What do you choose?",
+    text: "🧩 You reach a checkpoint. To continue, you must complete a task. What do you choose?",
     options: [
       { text: "Mix potions to create a new element", value: "science" },
       { text: "Program a robot to dance", value: "it" },
@@ -91,7 +70,7 @@ const questions = [
     ]
   },
   {
-    text: "A wise mentor appears to guide you. Who are they?",
+    text: "🧙‍♂️ A wise mentor appears to guide you. Who are they?",
     options: [
       { text: "A scientist with a telescope for an eye", value: "science" },
       { text: "A hacker who speaks in riddles", value: "it" },
@@ -101,17 +80,17 @@ const questions = [
     ]
   },
   {
-    text: "You travel through a magical land. What does it look like?",
+    text: "🌄 You travel through a magical land. What does it look like?",
     options: [
-      { text: "Crystals that hum with energy", value: "science" },
-      { text: "Floating data streams and glowing grids", value: "it" },
-      { text: "Villages connected by bridges of trust", value: "social" },
-      { text: "Hills that change color with emotion", value: "arts" },
-      { text: "Mountains carved by ancient machines", value: "practical" }
+      { text: "Crystals that never goes dark", value: "science" },
+      { text: "Endless electricity to charge your phone", value: "it" },
+      { text: "Friendly villagers offering free food", value: "social" },
+      { text: "Grass that change color with emotion", value: "arts" },
+      { text: "Flying busses", value: "practical" }
     ]
   },
   {
-    text: "You stumble upon a hidden treasure. What is it?",
+    text: "💎 You stumble upon a hidden treasure. What is it?",
     options: [
       { text: "A formula that changes gravity", value: "science" },
       { text: "A lost algorithm that predicts dreams", value: "it" },
@@ -121,7 +100,7 @@ const questions = [
     ]
   },
   {
-    text: "You arrive at a festival celebrating knowledge. What do you join?",
+    text: "🎉 You arrive at a festival celebrating knowledge. What do you join?",
     options: [
       { text: "A science fair with floating experiments", value: "science" },
       { text: "A coding competition with glowing keyboards", value: "it" },
@@ -131,7 +110,7 @@ const questions = [
     ]
   },
   {
-    text: "You’re offered a magical gift to help you on your journey. What do you choose?",
+    text: "🎁 You’re offered a magical gift to help you on your journey. What do you choose?",
     options: [
       { text: "A crystal that reveals scientific truths", value: "science" },
       { text: "A glove that controls digital worlds", value: "it" },
@@ -141,7 +120,7 @@ const questions = [
     ]
   },
   {
-    text: "You face your final trial. What kind of challenge do you embrace?",
+    text: "⚔️ You face your final trial. What kind of challenge do you embrace?",
     options: [
       { text: "Solve a mystery of disappearing stars", value: "science" },
       { text: "Decode a message from another dimension", value: "it" },
@@ -151,7 +130,7 @@ const questions = [
     ]
   },
   {
-    text: "At the end of your journey, a gate opens to your future. What lies beyond?",
+    text: "🚪 At the end of your journey, a gate opens to your future. What lies beyond?",
     options: [
       { text: "A university of endless experiments", value: "science" },
       { text: "A digital realm of infinite code", value: "it" },
