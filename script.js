@@ -161,33 +161,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function showQuestion(index) {
-    const q = questions[index];
-    questionContainer.innerHTML = `
-      <div class="question">
-        <p>${q.text}</p>
-        <div class="options">
-          ${q.options.map(opt =>
-            `<div class="option" tabindex="0" data-value="${opt.value}">
-              <button type="button" class="option-btn">${opt.text}</button>
-            </div>`
-          ).join("")}
-        </div>
+  const q = questions[index];
+  questionContainer.innerHTML = `
+    <div class="question">
+      <p>${q.text}</p>
+      <div class="options">
+        ${q.options.map(opt =>
+          `<div class="option" tabindex="0" data-value="${opt.value}">
+            <button type="button" class="option-btn">${opt.text}</button>
+          </div>`
+        ).join("")}
       </div>
-    `;
+    </div>
+  `;
 
-    document.querySelectorAll(".option").forEach(optionDiv => {
-      const btn = optionDiv.querySelector("button");
-      // Click handler
-      btn.addEventListener("click", () => handleOption(optionDiv));
-      // Keyboard accessibility: allow Enter/Space on option
-      optionDiv.addEventListener("keydown", e => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          handleOption(optionDiv);
-        }
-      });
+  document.querySelectorAll(".option").forEach(optionDiv => {
+    const btn = optionDiv.querySelector("button");
+    btn.addEventListener("click", () => handleOption(optionDiv));
+    optionDiv.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleOption(optionDiv);
+      }
     });
-  }
+  });
+}
 
   function handleOption(optionDiv) {
     // Visual feedback
