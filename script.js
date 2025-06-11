@@ -148,8 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const coverPage = document.getElementById("cover-page");
   const quizContent = document.getElementById("quiz-content");
   const questionContainer = document.getElementById("question-container");
-  const nextBtn = document.getElementById("next-btn");
   const resultDiv = document.getElementById("result");
+  const endingPage = document.getElementById("ending-page");
+  const finalResultDiv = document.getElementById("final-result");
   const startBtn = document.getElementById("start-btn");
 
   startBtn.addEventListener("click", () => {
@@ -176,6 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
       input.addEventListener("change", () => {
         document.querySelectorAll("label").forEach(label => label.classList.remove("selected"));
         input.parentElement.classList.add("selected");
+        answers.push(input.value);
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          showQuestion(currentQuestion);
+        } else {
+          showResult();
+        }
       });
     });
   }
@@ -201,24 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       result = "🌟 You have a unique blend of talents!";
     }
-    questionContainer.innerHTML = "";
-    nextBtn.style.display = "none";
-    resultDiv.textContent = result;
+    quizContent.style.display = "none";
+    endingPage.style.display = "block";
+    finalResultDiv.textContent = result;
   }
-
-  nextBtn.addEventListener("click", () => {
-    const selected = document.querySelector('input[name="answer"]:checked');
-    if (!selected) {
-      alert("Please select an answer!");
-      return;
-    }
-    answers.push(selected.value);
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-      showQuestion(currentQuestion);
-    } else {
-      showResult();
-    }
-  });
 });
-
