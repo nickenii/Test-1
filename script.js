@@ -148,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const coverPage = document.getElementById("cover-page");
   const quizContent = document.getElementById("quiz-content");
   const questionContainer = document.getElementById("question-container");
-  const resultDiv = document.getElementById("result");
   const endingPage = document.getElementById("ending-page");
   const finalResultDiv = document.getElementById("final-result");
   const startBtn = document.getElementById("start-btn");
@@ -164,8 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
     questionContainer.innerHTML = `
       <div class="question">
         <p>${q.text}</p>
-        ${q.options.map(opt => `
-          <label>
+        ${q.options.map((opt, i) => `
+          <label class="option">
             <input type="radio" name="answer" value="${opt.value}" />
             ${opt.text}
           </label>
@@ -175,15 +174,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('input[name="answer"]').forEach(input => {
       input.addEventListener("change", () => {
-        document.querySelectorAll("label").forEach(label => label.classList.remove("selected"));
+        document.querySelectorAll(".option").forEach(label => label.classList.remove("selected"));
         input.parentElement.classList.add("selected");
         answers.push(input.value);
         currentQuestion++;
-        if (currentQuestion < questions.length) {
-          showQuestion(currentQuestion);
-        } else {
-          showResult();
-        }
+        setTimeout(() => {
+          if (currentQuestion < questions.length) {
+            showQuestion(currentQuestion);
+          } else {
+            showResult();
+          }
+        }, 300);
       });
     });
   }
@@ -202,15 +203,13 @@ document.addEventListener("DOMContentLoaded", () => {
       result = "🎭 You are the Social Artist!";
     } else if (counts.practical > counts.it && counts.practical > counts.science && counts.practical > counts.social && counts.practical > counts.arts) {
       result = "🛠️ You are the Practical Pathfinder!";
-    } else if (counts.it >= 2 && counts.social >= 2) {
-      result = "💼 You are the Strategic Visionary!";
-    } else if (counts.science >= 2 && counts.it >= 2) {
-      result = "🧠 You are the Theorist & Philosopher!";
     } else {
       result = "🌟 You have a unique blend of talents!";
     }
+
     quizContent.style.display = "none";
     endingPage.style.display = "block";
     finalResultDiv.textContent = result;
   }
 });
+
