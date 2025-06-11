@@ -166,25 +166,44 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="question">
         <p>${q.text}</p>
         <div class="options">
-          ${q.options.map((opt, i) => 
-            `<button class="option-btn" data-value="${opt.value}">${opt.text}</button>`
+          ${q.options.map(opt =>
+            `<div class="option" tabindex="0" data-value="${opt.value}">
+              <button type="button" class="option-btn">${opt.text}</button>
+            </div>`
           ).join("")}
         </div>
       </div>
     `;
 
-    document.querySelectorAll(".option-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const value = btn.getAttribute("data-value");
-        answers.push(value);
-        currentQuestion++;
-        if (currentQuestion < questions.length) {
-          showQuestion(currentQuestion);
-        } else {
-          showResult();
+    document.querySelectorAll(".option").forEach(optionDiv => {
+      const btn = optionDiv.querySelector("button");
+      // Click handler
+      btn.addEventListener("click", () => handleOption(optionDiv));
+      // Keyboard accessibility: allow Enter/Space on option
+      optionDiv.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleOption(optionDiv);
         }
       });
     });
+  }
+
+  function handleOption(optionDiv) {
+    // Visual feedback
+    document.querySelectorAll(".option").forEach(l => l.classList.remove("selected"));
+    optionDiv.classList.add("selected");
+    // Store answer and move on
+    const value = optionDiv.getAttribute("data-value");
+    answers.push(value);
+    currentQuestion++;
+    setTimeout(() => {
+      if (currentQuestion < questions.length) {
+        showQuestion(currentQuestion);
+      } else {
+        showResult();
+      }
+    }, 220);
   }
 
   function showResult() {
