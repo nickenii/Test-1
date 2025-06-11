@@ -163,6 +163,7 @@ function showQuestion(index) {
   `;
 }
 
+
 function showResult() {
   const counts = { science: 0, it: 0, social: 0, arts: 0, practical: 0 };
   answers.forEach(ans => counts[ans]++);
