@@ -155,6 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener("click", () => {
     coverPage.style.display = "none";
     quizContent.style.display = "block";
+    currentQuestion = 0;
+    answers = [];
     showQuestion(currentQuestion);
   });
 
@@ -163,28 +165,24 @@ document.addEventListener("DOMContentLoaded", () => {
     questionContainer.innerHTML = `
       <div class="question">
         <p>${q.text}</p>
-        ${q.options.map((opt, i) => `
-          <label class="option">
-            <input type="radio" name="answer" value="${opt.value}" />
-            ${opt.text}
-          </label>
-        `).join("")}
+        <div class="options">
+          ${q.options.map((opt, i) => 
+            `<button class="option-btn" data-value="${opt.value}">${opt.text}</button>`
+          ).join("")}
+        </div>
       </div>
     `;
 
-    document.querySelectorAll('input[name="answer"]').forEach(input => {
-      input.addEventListener("change", () => {
-        document.querySelectorAll(".option").forEach(label => label.classList.remove("selected"));
-        input.parentElement.classList.add("selected");
-        answers.push(input.value);
+    document.querySelectorAll(".option-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const value = btn.getAttribute("data-value");
+        answers.push(value);
         currentQuestion++;
-        setTimeout(() => {
-          if (currentQuestion < questions.length) {
-            showQuestion(currentQuestion);
-          } else {
-            showResult();
-          }
-        }, 300);
+        if (currentQuestion < questions.length) {
+          showQuestion(currentQuestion);
+        } else {
+          showResult();
+        }
       });
     });
   }
@@ -212,4 +210,3 @@ document.addEventListener("DOMContentLoaded", () => {
     finalResultDiv.textContent = result;
   }
 });
-
