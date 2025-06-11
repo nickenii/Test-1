@@ -154,6 +154,7 @@ const questions = [
   }
 ];
 
+
 let currentQuestion = 0;
 let answers = [];
 
@@ -165,70 +166,71 @@ const resultDiv = document.getElementById("result");
 const startBtn = document.getElementById("start-btn");
 
 startBtn.addEventListener("click", () => {
-  coverPage.style.display = "none";
-  quizContent.style.display = "block";
-  showQuestion(currentQuestion);
+  coverPage.style.display = "none";
+  quizContent.style.display = "block";
+  showQuestion(currentQuestion);
 });
 
 function showQuestion(index) {
-  const q = questions[index];
-  questionContainer.innerHTML = `
-    <div class="question">
-      <p>${q.text}</p>
-      ${q.options.map((opt, i) => `
-        <label>
-          <input type="radio" name="answer" value="${opt.value}" />
-          ${opt.text}
-        </label>
-      `).join("")}
-    </div>
-  `;
+  const q = questions[index];
+  questionContainer.innerHTML = `
+    <div class="question">
+      <p>${q.text}</p>
+      ${q.options.map(opt => `
+        <label>
+          <input type="radio" name="answer" value="${opt.value}" />
+          ${opt.text}
+        </label>
+      `).join("")}
+    </div>
+  `;
 
-  document.querySelectorAll('input[name="answer"]').forEach(input => {
-    input.addEventListener("change", () => {
-      document.querySelectorAll("label").forEach(label => label.classList.remove("selected"));
-      input.parentElement.classList.add("selected");
-    });
-  });
+  document.querySelectorAll('input[name="answer"]').forEach(input => {
+    input.addEventListener("change", () => {
+      document.querySelectorAll("label").forEach(label => label.classList.remove("selected"));
+      input.parentElement.classList.add("selected");
+    });
+  });
 }
 
 function showResult() {
-  const counts = { science: 0, it: 0, social: 0, arts: 0, practical: 0 };
-  answers.forEach(ans => counts[ans]++);
-  let result;
-  if (counts.it > counts.science && counts.it > counts.social && counts.it > counts.arts && counts.it > counts.practical) {
-    result = "💻 You are the Computing Creator!";
-  } else if (counts.science > counts.it && counts.science > counts.social && counts.science > counts.arts && counts.science > counts.practical) {
-    result = "🔬 You are the Science & Data Seeker!";
-  } else if (counts.social > counts.it && counts.social > counts.science && counts.social > counts.arts && counts.social > counts.practical) {
-    result = "🌍 You are the Cultural Voyager!";
-  } else if (counts.arts > counts.it && counts.arts > counts.science && counts.arts > counts.social && counts.arts > counts.practical) {
-    result = "🎭 You are the Social Artist!";
-  } else if (counts.practical > counts.it && counts.practical > counts.science && counts.practical > counts.social && counts.practical > counts.arts) {
-    result = "🛠️ You are the Practical Pathfinder!";
-  } else if (counts.it >= 2 && counts.social >= 2) {
-    result = "💼 You are the Strategic Visionary!";
-  } else if (counts.science >= 2 && counts.it >= 2) {
-    result = "🧠 You are the Theorist & Philosopher!";
-  } else {
-    result = "🌟 You have a unique blend of talents!";
-  }
-  questionContainer.innerHTML = "";
-  nextBtn.style.display = "none";
-  resultDiv.textContent = result;
+  const counts = { science: 0, it: 0, social: 0, arts: 0, practical: 0 };
+  answers.forEach(ans => counts[ans]++);
+  let result;
+  if (counts.it > counts.science && counts.it > counts.social && counts.it > counts.arts && counts.it > counts.practical) {
+    result = "💻 You are the Computing Creator!";
+  } else if (counts.science > counts.it && counts.science > counts.social && counts.science > counts.arts && counts.science > counts.practical) {
+    result = "🔬 You are the Science & Data Seeker!";
+  } else if (counts.social > counts.it && counts.social > counts.science && counts.social > counts.arts && counts.social > counts.practical) {
+    result = "🌍 You are the Cultural Voyager!";
+  } else if (counts.arts > counts.it && counts.arts > counts.science && counts.arts > counts.social && counts.arts > counts.practical) {
+    result = "🎭 You are the Social Artist!";
+  } else if (counts.practical > counts.it && counts.practical > counts.science && counts.practical > counts.social && counts.practical > counts.arts) {
+    result = "🛠️ You are the Practical Pathfinder!";
+  } else if (counts.it >= 2 && counts.social >= 2) {
+    result = "💼 You are the Strategic Visionary!";
+  } else if (counts.science >= 2 && counts.it >= 2) {
+    result = "🧠 You are the Theorist & Philosopher!";
+  } else {
+    result = "🌟 You have a unique blend of talents!";
+  }
+  questionContainer.innerHTML = "";
+  nextBtn.style.display = "none";
+  resultDiv.textContent = result;
 }
 
 nextBtn.addEventListener("click", () => {
-  const selected = document.querySelector('input[name="answer"]:checked');
-  if (!selected) {
-    alert("Please select an answer!");
-    return;
-  }
-  answers.push(selected.value);
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    showQuestion(currentQuestion);
-  } else {
-    showResult();
-  }
+  const selected = document.querySelector('input[name="answer"]:checked');
+  if (!selected) {
+    alert("Please select an answer!");
+    return;
+  }
+  answers.push(selected.value);
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion(currentQuestion);
+  } else {
+    showResult();
+  }
 });
+
