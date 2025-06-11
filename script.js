@@ -141,12 +141,22 @@ const questions = [
   }
 ];
 
+
 let currentQuestion = 0;
 let answers = [];
 
+const coverPage = document.getElementById("cover-page");
+const quizContent = document.getElementById("quiz-content");
 const questionContainer = document.getElementById("question-container");
 const nextBtn = document.getElementById("next-btn");
 const resultDiv = document.getElementById("result");
+const startBtn = document.getElementById("start-btn");
+
+startBtn.addEventListener("click", () => {
+  coverPage.style.display = "none";
+  quizContent.style.display = "block";
+  showQuestion(currentQuestion);
+});
 
 function showQuestion(index) {
   const q = questions[index];
@@ -157,12 +167,19 @@ function showQuestion(index) {
         <label>
           <input type="radio" name="answer" value="${opt.value}" />
           ${opt.text}
-        </label><br/>
+        </label>
       `).join("")}
     </div>
   `;
-}
 
+  // Add selection effect
+  document.querySelectorAll('input[name="answer"]').forEach(input => {
+    input.addEventListener("change", () => {
+      document.querySelectorAll("label").forEach(label => label.classList.remove("selected"));
+      input.parentElement.classList.add("selected");
+    });
+  });
+}
 
 function showResult() {
   const counts = { science: 0, it: 0, social: 0, arts: 0, practical: 0 };
@@ -205,4 +222,3 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-showQuestion(currentQuestion);
