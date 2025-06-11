@@ -60,6 +60,20 @@ p {
   border-color: #FFD54F;
 }
 
+.start-btn {
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  background: none;
+  border: none;
+  outline: none;
+  color: #4A4A4A;
+  font-size: 18px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
 .option-btn {
   font-family: 'Gochi Hand', cursive, sans-serif;
   background: none;
