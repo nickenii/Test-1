@@ -33,21 +33,24 @@ p {
   text-align: left;
 }
 
-.option {
+.option-btn {
   display: block;
+  margin: 10px 0;
+  width: 100%;
   background: #FFF3C4;
+  border: none;
+  border-radius: 4px;
   padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.3s, border-color 0.3s;
   border: 2px solid transparent;
 }
-
-.option:hover {
+.option-btn:hover {
   background: #FFE082;
   border-color: #FFD54F;
 }
+
 
 .option.selected {
   background-color: #FFE082;
