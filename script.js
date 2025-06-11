@@ -141,6 +141,18 @@ const questions = [
   }
 ];
 
+const questions = [
+  {
+    text: "🚪 At the end of your journey, a gate opens to your future. What lies beyond?",
+    options: [
+      { text: "A university of endless experiments", value: "science" },
+      { text: "A digital realm of infinite code", value: "it" },
+      { text: "A center for global leadership", value: "social" },
+      { text: "A sanctuary of creativity", value: "arts" },
+      { text: "A forge of invention and action", value: "practical" }
+    ]
+  }
+];
 
 let currentQuestion = 0;
 let answers = [];
@@ -172,7 +184,6 @@ function showQuestion(index) {
     </div>
   `;
 
-  // Add selection effect
   document.querySelectorAll('input[name="answer"]').forEach(input => {
     input.addEventListener("change", () => {
       document.querySelectorAll("label").forEach(label => label.classList.remove("selected"));
@@ -221,4 +232,3 @@ nextBtn.addEventListener("click", () => {
     showResult();
   }
 });
-
