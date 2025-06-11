@@ -33,31 +33,42 @@ p {
   text-align: left;
 }
 
+/* Cute option button, matching original visual */
+.option {
+  display: block;
+  background: #FFF3C4;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 2px solid transparent;
+  transition: background 0.3s, border-color 0.3s;
+  padding: 0;
+  cursor: pointer;
+}
+
 .option-btn {
   font-family: 'Gochi Hand', cursive, sans-serif;
   background: none;
   border: none;
-  outline: none;
-  color: #4A4A4A;
-  font-size: 18px;
-  padding: 0;
   width: 100%;
   text-align: left;
+  padding: 14px 16px;
+  font-size: 18px;
+  color: #4A4A4A;
   cursor: pointer;
-}
-.option.selected {
-  background-color: #FFE082 !important;
-  border-color: #FFCA28 !important;
+  border-radius: 10px;
+  outline: none;
+  transition: background 0.3s, color 0.3s;
 }
 
+.option:hover,
+.option:focus-within {
+  background: #FFE082;
+  border-color: #FFD54F;
+}
 
 .option.selected {
-  background-color: #FFE082;
+  background: #FFE082;
   border-color: #FFCA28;
-}
-
-input[type="radio"] {
-  display: none;
 }
 
 #final-result {
