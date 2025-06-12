@@ -60,7 +60,23 @@ p {
   border-color: #FFD54F;
 }
 
-#start-btn {
+}
+.option-btn {
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  background: none;
+  border: none;
+  outline: none;
+  color: #4A4A4A;
+  font-size: 20px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.start-btn {
   display: block;
   margin: 28px auto 0 auto;
   background: #FFF3C4;
@@ -75,26 +91,10 @@ p {
   transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
 }
 
-#start-btn:hover,
-#start-btn:focus {
+.start-btn:hover,
+.start-btn:focus-within {
   background: #FFE082;
   border-color: #FFD54F;
-  box-shadow: 0 4px 12px rgba(255, 202, 40, 0.16);
-}
-}
-.option-btn {
-  font-family: 'Gochi Hand', cursive, sans-serif;
-  background: none;
-  border: none;
-  outline: none;
-  color: #4A4A4A;
-  font-size: 18px;
-  width: 100%;
-  text-align: left;
-  padding: 14px 16px;
-  cursor: pointer;
-  border-radius: 10px;
-  box-sizing: border-box;
 }
 
 #final-result {
