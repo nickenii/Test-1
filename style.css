@@ -76,13 +76,14 @@ p {
 }
 
 #final-result {
-  margin-top: 20px;
-  font-weight: bold;
-  background: #FFF3C4;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+  background: #FFF3C4;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  font-size: 18px;
+  white-space: pre-line;
 }
 
 button, .option-btn {
