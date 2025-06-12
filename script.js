@@ -142,16 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  const descriptions = {
-    it: "💻 Computing Creator\nYou're a Computing Creator, and your brain is always buzzing with cool ideas to build! ...",
-    science: "🔬 Science & Data Seeker\nAs a Science & Data Seeker, your curiosity is off the charts! ...",
-    social: "🌍 Cultural Voyager\nYou are a Cultural Voyager, someone who always wants to explore the amazing variety of human cultures ...",
-    arts: "🎭 Social Artist\nA Social Artist like you really gets people and how they express themselves! ...",
-    practical: "🛠️ Practical Pathfinder\nAs a Practical Pathfinder, you love getting your hands dirty and solving real-world problems! ...",
-    strategic: "💼 Strategic Visionary\nYou are a Strategic Visionary, always seeing the big picture and thinking about how to achieve important goals ...",
-    theorist: "🧠 Theorist & Philosopher\nYou are a true Theorist & Philosopher, someone who loves to dive deep into the big questions ..."
-  };
-
   let currentQuestion = 0;
   let answers = [];
 
@@ -173,20 +163,24 @@ document.addEventListener("DOMContentLoaded", () => {
     questionContainer.innerHTML = `
       <div class="question">
         <p>${q.text}</p>
-        ${q.options.map(opt => `
-          <label class="option">
-            <input type="radio" name="answer" value="${opt.value}" />
-            ${opt.text}
-          </label>
-        `).join("")}
+        <div class="options">
+          ${q.options.map((opt, i) => `
+            <div class="option" tabindex="0" data-value="${opt.value}">
+              <button type="button" class="option-btn">${opt.text}</button>
+            </div>
+          `).join("")}
+        </div>
       </div>
     `;
 
-    document.querySelectorAll('input[name="answer"]').forEach(input => {
-      input.addEventListener("change", () => {
+    document.querySelectorAll('.option-btn').forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        // Remove selection from all
         document.querySelectorAll(".option").forEach(label => label.classList.remove("selected"));
-        input.parentElement.classList.add("selected");
-        answers.push(input.value);
+        // Add selection to the clicked
+        btn.parentElement.classList.add("selected");
+        // Store answer
+        answers.push(btn.parentElement.getAttribute("data-value"));
         currentQuestion++;
         setTimeout(() => {
           if (currentQuestion < questions.length) {
@@ -202,28 +196,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function showResult() {
     const counts = { science: 0, it: 0, social: 0, arts: 0, practical: 0 };
     answers.forEach(ans => counts[ans]++);
-    let resultKey = null;
-
+    let result;
     if (counts.it > counts.science && counts.it > counts.social && counts.it > counts.arts && counts.it > counts.practical) {
-      resultKey = "it";
+      result = "💻 Computing Creator!\n\nYour brain is always buzzing with cool ideas to build! For you, studying isn't just about textbooks; it's about getting the skills to bring your digital dreams to life. You love figuring out tricky problems, enjoy the challenge of writing code, and see the world as a giant puzzle waiting for your solutions. Whether you're dreaming of creating the next big app, designing amazing games, or making AI do incredible things, you're ready to shape the future, one line of code at a time.";
     } else if (counts.science > counts.it && counts.science > counts.social && counts.science > counts.arts && counts.science > counts.practical) {
-      resultKey = "science";
+      result = "🔬 Science & Data Seeker!\n\nYour curiosity is off the charts! You're driven by a deep need to understand how everything works, from tiny cells to massive galaxies. Your ideal study journey involves exciting experiments, crunching numbers, and the thrill of new discoveries. You're great with complex information, enjoy solving complicated puzzles, and are excited to contribute to scientific breakthroughs, whether you're in a lab, out in the field, or working with powerful computers.";
     } else if (counts.social > counts.it && counts.social > counts.science && counts.social > counts.arts && counts.social > counts.practical) {
-      resultKey = "social";
+      result = "🌍 Cultural Voyager!\n\nSomeone who always wants to explore the amazing variety of human cultures, histories, and how the world connects. For you, studying is like an adventure – a chance to discover different societies, languages, and ways of living. You love learning about the past to understand today, analyzing global trends, and helping people from different backgrounds understand each other. Your ideal path involves broadening your horizons, embracing diversity, and becoming a bridge between different worlds, whether through international studies, history, or preserving cultural heritage.";
     } else if (counts.arts > counts.it && counts.arts > counts.science && counts.arts > counts.social && counts.arts > counts.practical) {
-      resultKey = "arts";
+      result = "🎭 Social Artist!\n\nYou really gets people and how they express themselves! You're at your best when you're exploring how people behave, how societies work, and different cultures, then using that understanding to make a difference. Your studies will likely involve connecting with all sorts of viewpoints, understanding social dynamics, and developing skills to communicate, connect, and inspire. Whether you're passionate about telling stories, fighting for what's right, creating engaging experiences, or understanding the human mind, you're ready to make your mark on the world with empathy and creativity.";
     } else if (counts.practical > counts.it && counts.practical > counts.science && counts.practical > counts.social && counts.practical > counts.arts) {
-      resultKey = "practical";
-    } else if (counts.it >= 2 && counts.social >= 2) {
-      resultKey = "strategic";
-    } else if (counts.science >= 2 && counts.it >= 2) {
-      resultKey = "theorist";
+      result = "🛠️ Practical Pathfinder!\n\nYou love getting your hands dirty and solving real-world problems! You thrive on taking ideas and making them happen, creating actual solutions, and seeing the direct results of your hard work. For you, studying is about gaining useful, hands-on skills and knowledge that you can immediately put to good use. You're drawn to fields where you can invent, build, improve things, and directly help make practical improvements, whether it's in engineering, technical trades, or applied sciences.";
+    } else {
+      result = "🌟 You have a unique blend of talents!\n\nYou have strengths across many fields, making you adaptable and ready for any challenge. Explore different paths and combine your interests for a truly magical future!";
     }
 
-    const result = descriptions[resultKey] || "🌟 You have a unique blend of talents!";
     quizContent.style.display = "none";
     endingPage.style.display = "block";
-    finalResultDiv.textContent = result;
+    finalResultDiv.textContent = ""; // Clear previous
+    // Use pre-line to preserve paragraphs
+    finalResultDiv.innerText = result;
   }
 });
 
