@@ -80,8 +80,9 @@ p {
   color: #FF9800;
 }
 
+/* Hide any radio inputs if present (removes dot) */
 input[type="radio"] {
-  display: none;
+  display: none !important;
 }
 
 /* Start Quiz button style */
