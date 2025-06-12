@@ -142,6 +142,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  const descriptions = {
+    it: "💻 Computing Creator\nYou're a Computing Creator, and your brain is always buzzing with cool ideas to build! ...",
+    science: "🔬 Science & Data Seeker\nAs a Science & Data Seeker, your curiosity is off the charts! ...",
+    social: "🌍 Cultural Voyager\nYou are a Cultural Voyager, someone who always wants to explore the amazing variety of human cultures ...",
+    arts: "🎭 Social Artist\nA Social Artist like you really gets people and how they express themselves! ...",
+    practical: "🛠️ Practical Pathfinder\nAs a Practical Pathfinder, you love getting your hands dirty and solving real-world problems! ...",
+    strategic: "💼 Strategic Visionary\nYou are a Strategic Visionary, always seeing the big picture and thinking about how to achieve important goals ...",
+    theorist: "🧠 Theorist & Philosopher\nYou are a true Theorist & Philosopher, someone who loves to dive deep into the big questions ..."
+  };
+
   let currentQuestion = 0;
   let answers = [];
 
@@ -155,75 +165,65 @@ document.addEventListener("DOMContentLoaded", () => {
   startBtn.addEventListener("click", () => {
     coverPage.style.display = "none";
     quizContent.style.display = "block";
-    currentQuestion = 0;
-    answers = [];
     showQuestion(currentQuestion);
   });
 
   function showQuestion(index) {
-  const q = questions[index];
-  questionContainer.innerHTML = `
-    <div class="question">
-      <h1>${q.text}</h1>
-      <div class="options">
-        ${q.options.map(opt =>
-          `<div class="option" tabindex="0" data-value="${opt.value}">
-            <button type="button" class="option-btn">${opt.text}</button>
-          </div>`
-        ).join("")}
+    const q = questions[index];
+    questionContainer.innerHTML = `
+      <div class="question">
+        <p>${q.text}</p>
+        ${q.options.map(opt => `
+          <label class="option">
+            <input type="radio" name="answer" value="${opt.value}" />
+            ${opt.text}
+          </label>
+        `).join("")}
       </div>
-    </div>
-  `;
+    `;
 
-  document.querySelectorAll(".option").forEach(optionDiv => {
-    const btn = optionDiv.querySelector("button");
-    btn.addEventListener("click", () => handleOption(optionDiv));
-    optionDiv.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        handleOption(optionDiv);
-      }
+    document.querySelectorAll('input[name="answer"]').forEach(input => {
+      input.addEventListener("change", () => {
+        document.querySelectorAll(".option").forEach(label => label.classList.remove("selected"));
+        input.parentElement.classList.add("selected");
+        answers.push(input.value);
+        currentQuestion++;
+        setTimeout(() => {
+          if (currentQuestion < questions.length) {
+            showQuestion(currentQuestion);
+          } else {
+            showResult();
+          }
+        }, 300);
+      });
     });
-  });
-}
-
-  function handleOption(optionDiv) {
-    // Visual feedback
-    document.querySelectorAll(".option").forEach(l => l.classList.remove("selected"));
-    optionDiv.classList.add("selected");
-    // Store answer and move on
-    const value = optionDiv.getAttribute("data-value");
-    answers.push(value);
-    currentQuestion++;
-    setTimeout(() => {
-      if (currentQuestion < questions.length) {
-        showQuestion(currentQuestion);
-      } else {
-        showResult();
-      }
-    }, 220);
   }
 
   function showResult() {
     const counts = { science: 0, it: 0, social: 0, arts: 0, practical: 0 };
     answers.forEach(ans => counts[ans]++);
-    let result;
+    let resultKey = null;
+
     if (counts.it > counts.science && counts.it > counts.social && counts.it > counts.arts && counts.it > counts.practical) {
-      result = "💻 You are the Computing Creator!";
+      resultKey = "it";
     } else if (counts.science > counts.it && counts.science > counts.social && counts.science > counts.arts && counts.science > counts.practical) {
-      result = "🔬 You are the Science & Data Seeker!";
+      resultKey = "science";
     } else if (counts.social > counts.it && counts.social > counts.science && counts.social > counts.arts && counts.social > counts.practical) {
-      result = "🌍 You are the Cultural Voyager!";
+      resultKey = "social";
     } else if (counts.arts > counts.it && counts.arts > counts.science && counts.arts > counts.social && counts.arts > counts.practical) {
-      result = "🎭 You are the Social Artist!";
+      resultKey = "arts";
     } else if (counts.practical > counts.it && counts.practical > counts.science && counts.practical > counts.social && counts.practical > counts.arts) {
-      result = "🛠️ You are the Practical Pathfinder!";
-    } else {
-      result = "🌟 You have a unique blend of talents!";
+      resultKey = "practical";
+    } else if (counts.it >= 2 && counts.social >= 2) {
+      resultKey = "strategic";
+    } else if (counts.science >= 2 && counts.it >= 2) {
+      resultKey = "theorist";
     }
 
+    const result = descriptions[resultKey] || "🌟 You have a unique blend of talents!";
     quizContent.style.display = "none";
     endingPage.style.display = "block";
     finalResultDiv.textContent = result;
   }
 });
+
