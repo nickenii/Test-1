@@ -23,7 +23,7 @@ h1 {
 }
 
 p {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -60,19 +60,27 @@ p {
   border-color: #FFD54F;
 }
 
-.start-btn {
-  font-family: 'Gochi Hand', cursive, sans-serif;
-  background: none;
-  border: none;
-  outline: none;
-  color: #4A4A4A;
-  font-size: 18px;
-  width: 100%;
-  text-align: left;
-  padding: 14px 16px;
-  cursor: pointer;
+#start-btn {
+  display: block;
+  margin: 28px auto 0 auto;
+  background: #FFF3C4;
+  border: 2px solid transparent;
   border-radius: 10px;
-  box-sizing: border-box;
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  color: #4A4A4A;
+  font-size: 20px;
+  padding: 16px 32px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+}
+
+#start-btn:hover,
+#start-btn:focus {
+  background: #FFE082;
+  border-color: #FFD54F;
+  box-shadow: 0 4px 12px rgba(255, 202, 40, 0.16);
+}
 }
 .option-btn {
   font-family: 'Gochi Hand', cursive, sans-serif;
@@ -100,8 +108,5 @@ p {
 }
 
 button, .option-btn {
-  font-family: 'Gochi Hand', cursive, sans-serif;
-}
-button, .start-btn {
   font-family: 'Gochi Hand', cursive, sans-serif;
 }
