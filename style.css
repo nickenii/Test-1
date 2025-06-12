@@ -88,7 +88,8 @@ p {
 button, .option-btn {
   font-family: 'Gochi Hand', cursive, sans-serif;
 }
-.start-btn {
+
+#start-btn {
   display: block;
   margin: 28px auto 0 auto;
   background: #FFF3C4;
@@ -103,9 +104,10 @@ button, .option-btn {
   transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
 }
 
-.start-btn:hover,
-.start-btn:focus-within {
+#start-btn:hover,
+#start-btn:focus {
   background: #FFE082;
   border-color: #FFD54F;
+  box-shadow: 0 4px 12px rgba(255, 202, 40, 0.16);
 }
 
