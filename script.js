@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const q = questions[index];
   questionContainer.innerHTML = `
     <div class="question">
-      <p>${q.text}</p>
+      <h1>${q.text}</h1>
       <div class="options">
         ${q.options.map(opt =>
           `<div class="option" tabindex="0" data-value="${opt.value}">
