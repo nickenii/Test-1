@@ -23,7 +23,7 @@ h1 {
 }
 
 p {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -33,11 +33,11 @@ p {
   text-align: left;
 }
 
-/* Fix for cute block option buttons! */
 .options {
   margin-top: 8px;
 }
 
+/* Cute block-style for question options */
 .option {
   background: #FFF3C4;
   border-radius: 10px;
@@ -80,16 +80,11 @@ p {
   color: #FF9800;
 }
 
-#final-result {
-  margin-top: 20px;
-  font-weight: bold;
-  background: #FFF3C4;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: left;
-  font-size: 20px;
+input[type="radio"] {
+  display: none;
 }
 
+/* Start Quiz button style */
 #start-btn {
   display: block;
   margin: 28px auto 0 auto;
@@ -110,4 +105,14 @@ p {
   background: #FFE082;
   border-color: #FFD54F;
   box-shadow: 0 4px 12px rgba(255, 202, 40, 0.16);
+}
+
+#final-result {
+  margin-top: 20px;
+  font-weight: bold;
+  background: #FFF3C4;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 20px;
 }
