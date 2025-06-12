@@ -60,7 +60,6 @@ p {
   border-color: #FFD54F;
 }
 
-}
 .option-btn {
   font-family: 'Gochi Hand', cursive, sans-serif;
   background: none;
@@ -75,6 +74,7 @@ p {
   border-radius: 10px;
   box-sizing: border-box;
 }
+
 #final-result {
   margin-top: 20px;
   font-weight: bold;
