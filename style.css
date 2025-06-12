@@ -33,6 +33,7 @@ p {
   text-align: left;
 }
 
+/* Fix for cute block option buttons! */
 .options {
   margin-top: 8px;
 }
@@ -46,10 +47,10 @@ p {
   cursor: pointer;
   overflow: hidden;
   padding: 0;
+  display: block;
 }
 
-.option.selected,
-.option:active {
+.option.selected {
   background-color: #FFE082;
   border-color: #FFCA28;
 }
@@ -66,13 +67,17 @@ p {
   border: none;
   outline: none;
   color: #4A4A4A;
-  font-size: 20px;
+  font-size: 18px;
   width: 100%;
   text-align: left;
   padding: 14px 16px;
   cursor: pointer;
   border-radius: 10px;
   box-sizing: border-box;
+}
+
+.option-btn:active {
+  color: #FF9800;
 }
 
 #final-result {
@@ -83,10 +88,6 @@ p {
   border-radius: 12px;
   text-align: left;
   font-size: 20px;
-}
-
-button, .option-btn {
-  font-family: 'Gochi Hand', cursive, sans-serif;
 }
 
 #start-btn {
