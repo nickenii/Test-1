@@ -47,11 +47,13 @@ p {
   cursor: pointer;
   overflow: hidden;
   padding: 0;
-  display: block;
+  display: flex;                  /* Use flex to center content */
+  align-items: center;            /* Vertical centering */
+  justify-content: center;        /* Horizontal centering */
   min-height: 56px;
   min-width: 100%;
   box-sizing: border-box;
-  list-style-type: none; /* <-- REMOVE DOT if .option is a <li>! */
+  list-style-type: none;
 }
 
 .option.selected {
@@ -73,25 +75,24 @@ p {
   color: #4A4A4A;
   font-size: 20px;
   width: 100%;
-  text-align: left;
+  text-align: center;             /* Center text horizontally */
   padding: 18px 20px;
   cursor: pointer;
   border-radius: 10px;
   box-sizing: border-box;
   white-space: normal;
   word-break: break-word;
+  display: block;
 }
 
 .option-btn:active {
   color: #FF9800;
 }
 
-/* Hide any radio inputs if present (removes dot) */
 input[type="radio"] {
   display: none !important;
 }
 
-/* Remove dots if .option is inside a <ul> or <ol> */
 ul, ol {
   list-style: none;
   padding-left: 0;
