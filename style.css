@@ -37,7 +37,6 @@ p {
   margin-top: 8px;
 }
 
-/* Cute block-style for question options */
 .option {
   background: #FFF3C4;
   border-radius: 10px;
@@ -47,9 +46,9 @@ p {
   cursor: pointer;
   overflow: hidden;
   padding: 0;
-  display: flex;                  /* Use flex to center content */
-  align-items: center;            /* Vertical centering */
-  justify-content: center;        /* Horizontal centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 56px;
   min-width: 100%;
   box-sizing: border-box;
@@ -75,7 +74,7 @@ p {
   color: #4A4A4A;
   font-size: 20px;
   width: 100%;
-  text-align: center;             /* Center text horizontally */
+  text-align: center;
   padding: 18px 20px;
   cursor: pointer;
   border-radius: 10px;
@@ -99,7 +98,6 @@ ul, ol {
   margin-left: 0;
 }
 
-/* Start Quiz button style */
 #start-btn {
   display: block;
   margin: 28px auto 0 auto;
@@ -126,8 +124,15 @@ ul, ol {
   margin-top: 20px;
   font-weight: bold;
   background: #FFF3C4;
-  padding: 20px;
+  padding: 24px 20px;
   border-radius: 12px;
   text-align: center;
-  font-size: 20px;
+  font-size: 22px;
+  word-break: break-word;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  min-height: 0;
 }
