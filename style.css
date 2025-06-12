@@ -75,7 +75,19 @@ p {
   border-radius: 10px;
   box-sizing: border-box;
 }
+#final-result {
+  margin-top: 20px;
+  font-weight: bold;
+  background: #FFF3C4;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 20px;
+}
 
+button, .option-btn {
+  font-family: 'Gochi Hand', cursive, sans-serif;
+}
 .start-btn {
   display: block;
   margin: 28px auto 0 auto;
@@ -97,16 +109,3 @@ p {
   border-color: #FFD54F;
 }
 
-#final-result {
-  margin-top: 20px;
-  font-weight: bold;
-  background: #FFF3C4;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 20px;
-}
-
-button, .option-btn {
-  font-family: 'Gochi Hand', cursive, sans-serif;
-}
